@@ -3,10 +3,13 @@ services:
   source_db:
     image: postgres:15
     container_name: source_db
+    restart: always
+    env_file:
+      - .env
     environment:
-      POSTGRES_DB: source
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: ${SOURCE_DB_NAME}
+      POSTGRES_USER: ${SOURCE_DB_USER}
+      POSTGRES_PASSWORD: ${SOURCE_DB_PASSWORD}
     ports:
       - "5433:5432"
     volumes:
@@ -15,10 +18,13 @@ services:
   target_db:
     image: postgres:15
     container_name: target_db
+    restart: always
+    env_file:
+      - .env
     environment:
-      POSTGRES_DB: target
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: ${TARGET_DB_NAME}
+      POSTGRES_USER: ${TARGET_DB_USER}
+      POSTGRES_PASSWORD: ${TARGET_DB_PASSWORD}
     ports:
       - "5434:5432"
     volumes:
@@ -27,40 +33,44 @@ services:
   api:
     build: ./api
     container_name: api
+    restart: always
     depends_on:
       - source_db
-    environment:
-      DATABASE_URL: postgresql://user:pass@source_db:5432/source
+    env_file:
+      - .env
     ports:
       - "8000:8000"
     dns:
-    - 8.8.8.8
-    - 1.1.1.1
+      - 8.8.8.8
+      - 1.1.1.1
 
   etl:
     build: ./etl
     container_name: etl_container
+    restart: always
     depends_on:
       - api
       - target_db
-    environment:
-      SOURCE_API_URL: http://api:8000
-      TARGET_DB_URL: postgresql://user:pass@target_db:5432/target
+    env_file:
+      - .env
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
 
   dagster:
     build: ./dagster
     container_name: dagster_web
+    restart: always
     depends_on:
       - source_db
       - target_db
-    environment:
-      SOURCE_DB_URL: postgresql://user:pass@source_db:5432/source
-      TARGET_DB_URL: postgresql://user:pass@target_db:5432/target
+    env_file:
+      - .env
     ports:
       - "3000:3000"
     dns:
-    - 8.8.8.8
-    - 1.1.1.1
+      - 8.8.8.8
+      - 1.1.1.1
 
 volumes:
   source_data:
