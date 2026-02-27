@@ -39,7 +39,7 @@ All services are containerized and managed with Docker Compose.
 
 ---
 
-## 📦 Project Structure
+## Project Structure
 
 ```
 project/
@@ -59,7 +59,7 @@ project/
 
 ---
 
-## 🚀 Running the Project
+## Running the Project
 
 ### 1️Build and start services
 
@@ -97,7 +97,7 @@ dagster job execute -j etl_job --partition 2026-02-26
 
 ---
 
-## 📅 Partitions
+## Partitions
 
 The pipeline uses **daily partitions** starting from:
 
@@ -109,7 +109,7 @@ Each partition represents one day of data and can be independently reprocessed.
 
 ---
 
-## 🔁 Idempotency
+## Idempotency
 
 The ETL ensures idempotency with:
 
