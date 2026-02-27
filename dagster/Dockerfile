@@ -1,14 +1,16 @@
-FROM python:3.11-slim
+FROM python:3.11
 
 WORKDIR /app
 
 COPY requirements.txt .
-
-RUN pip install --upgrade pip \
-    && pip install --default-timeout=100 --retries 10 --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
+RUN mkdir -p /app/dagster_home
+
+ENV DAGSTER_HOME=/app/dagster_home
+
 EXPOSE 3000
 
-CMD ["dagster", "dev", "-h", "0.0.0.0"]
+CMD ["dagster", "dev", "-h", "0.0.0.0", "-p", "3000", "-w", "workspace.yaml"]
