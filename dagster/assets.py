@@ -1,9 +1,9 @@
-from dagster import asset, DailyPartitionsDefinition
-from etl.etl import run_etl
+from dagster import asset
+import subprocess
 
-daily = DailyPartitionsDefinition(start_date="2024-01-01")
-
-@asset(partitions_def=daily)
-def etl_asset(context):
-    date = context.partition_key
-    run_etl(date)
+@asset
+def etl_asset():
+    subprocess.run(
+        ["python", "/app/etl/etl.py", "2026-02-27"],
+        check=True
+    )
