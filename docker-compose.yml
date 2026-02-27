@@ -1,0 +1,67 @@
+services:
+
+  source_db:
+    image: postgres:15
+    container_name: source_db
+    environment:
+      POSTGRES_DB: source
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+    ports:
+      - "5433:5432"
+    volumes:
+      - source_data:/var/lib/postgresql/data
+
+  target_db:
+    image: postgres:15
+    container_name: target_db
+    environment:
+      POSTGRES_DB: target
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+    ports:
+      - "5434:5432"
+    volumes:
+      - target_data:/var/lib/postgresql/data
+
+  api:
+    build: ./api
+    container_name: api
+    depends_on:
+      - source_db
+    environment:
+      DATABASE_URL: postgresql://user:pass@source_db:5432/source
+    ports:
+      - "8000:8000"
+    dns:
+    - 8.8.8.8
+    - 1.1.1.1
+
+  etl:
+    build: ./etl
+    container_name: etl_container
+    depends_on:
+      - api
+      - target_db
+    environment:
+      SOURCE_API_URL: http://api:8000
+      TARGET_DB_URL: postgresql://user:pass@target_db:5432/target
+
+  dagster:
+    build: ./dagster
+    container_name: dagster_web
+    depends_on:
+      - source_db
+      - target_db
+    environment:
+      SOURCE_DB_URL: postgresql://user:pass@source_db:5432/source
+      TARGET_DB_URL: postgresql://user:pass@target_db:5432/target
+    ports:
+      - "3000:3000"
+    dns:
+    - 8.8.8.8
+    - 1.1.1.1
+
+volumes:
+  source_data:
+  target_data:
