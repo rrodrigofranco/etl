@@ -1,4 +1,4 @@
-# ETL Delfos – Data Pipeline with Dagster
+# ETL – Data Pipeline with Dagster
 
 This project implements a fully containerized data pipeline using:
 
