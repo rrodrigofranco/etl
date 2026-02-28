@@ -43,6 +43,8 @@ services:
     dns:
       - 8.8.8.8
       - 1.1.1.1
+    volumes:
+      - ./api:/app
 
   etl:
     build: ./etl
@@ -56,6 +58,8 @@ services:
     dns:
       - 8.8.8.8
       - 1.1.1.1
+    volumes:
+      - ./etl:/app
 
   dagster:
     build: ./dagster
@@ -70,6 +74,7 @@ services:
       - "3000:3000"
     volumes:
       - ./etl:/app/etl
+      - ./dagster:/app
     dns:
       - 8.8.8.8
       - 1.1.1.1

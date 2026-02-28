@@ -4,13 +4,17 @@ import pytest
 from fastapi.testclient import TestClient
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-
 from main import app
 
+
+API_TOKEN = os.getenv("API_TOKEN")
 client = TestClient(app)
 
 def test_health_check():
-    response = client.get("/docs")
+    response = client.get("/docs", 
+                        headers={
+                    "Authorization": f"Bearer {API_TOKEN}"
+                })
     assert response.status_code == 200
 
 def test_data_with_date_filter_and_returns_json():
@@ -19,8 +23,11 @@ def test_data_with_date_filter_and_returns_json():
         params={
             "start": "2024-01-01 00:00:00",
             "end": "2024-01-01 01:00:00",
-            "variables": ["wind_speed", "power"]
-        }
+            "variables": ["wind_speed", "power"],
+        },
+        headers={
+                    "Authorization": f"Bearer {API_TOKEN}"
+                }
     )
 
     assert response.status_code == 200
