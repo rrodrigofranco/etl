@@ -47,8 +47,12 @@ project/
 ├── api/
 │   ├── database.py
 │   ├── main.py
-│   ├── models.py
-│   ├── seed.py
+│   ├── models/data.py
+│   ├── core/security.py
+│   ├── routes/data_router.py
+│   ├── services/service.py
+│   ├── seeds/seed_data.py
+│   ├── tests/test_api.py
 ├── etl/
 │   ├── etl.py
 │   ├── target_models.py
