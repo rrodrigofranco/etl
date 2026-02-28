@@ -103,6 +103,20 @@ dagster job execute -j etl_job --partition 2026-02-26
 
 ---
 
+## Makefile Commands
+
+Use the following commands to manage the project:
+
+```bash
+make up              # Build and start all services in detached mode
+make logs            # Follow logs from all containers
+make ssh-dagster     # Access the Dagster container shell
+make test-api        # Run automated tests inside the API container
+make run-etl         # Execute the ETL manually for a specifc date
+make down            # Stop and remove all containers
+```
+---
+
 ## Partitions
 
 The pipeline uses **daily partitions** starting from:
