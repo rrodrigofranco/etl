@@ -66,6 +66,13 @@ ssh-target-db:
 	docker exec -it target_db psql -U user -d target
 
 # ------------------------------
+# Run Seed (API)
+# ------------------------------
+
+seed:
+	docker exec -it api python seed.py
+
+# ------------------------------
 # Run tests (API)
 # ------------------------------
 test-api:

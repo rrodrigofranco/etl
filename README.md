@@ -120,6 +120,7 @@ make ssh-source-db   # Access the Source DB container shell
 make ssh-target-db   # Access the Target DB container shell
 make test-api        # Run automated tests inside the API container
 make run-etl         # Execute the ETL manually for a specifc date
+make seed            # Run the seed
 make down            # Stop and remove all containers
 ```
 ---
