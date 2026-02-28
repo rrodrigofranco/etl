@@ -70,7 +70,7 @@ ssh-target-db:
 # ------------------------------
 
 seed:
-	docker exec -it api python seed.py
+	docker exec -it api python -m seeds.seed_data
 
 # ------------------------------
 # Run tests (API)

@@ -7,8 +7,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-RUN mkdir -p /app/dagster_home
-
 ENV DAGSTER_HOME=/app/dagster_home
 
 EXPOSE 3000
