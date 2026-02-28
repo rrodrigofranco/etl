@@ -12,6 +12,7 @@ def run_etl(date: str):
 
     try:
         SOURCE_API = os.getenv("SOURCE_API_URL")
+        API_TOKEN  = os.getenv("API_TOKEN")
 
         TARGET_DB = (
             f"postgresql://{os.getenv('TARGET_DB_USER')}:"
@@ -37,6 +38,9 @@ def run_etl(date: str):
                     "start": start,
                     "end": end,
                     "variables": ["wind_speed", "power"]
+                },
+                headers={
+                    "Authorization": f"Bearer {API_TOKEN}"
                 },
                 timeout=30.0
             )
