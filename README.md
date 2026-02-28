@@ -110,7 +110,14 @@ Use the following commands to manage the project:
 ```bash
 make up              # Build and start all services in detached mode
 make logs            # Follow logs from all containers
+make logs-api        # Follow logs from Api container
+make logs-etl        # Follow logs from ETL container
+make logs-dagster    # Follow logs from Dagster container
+make ssh-api         # Access the Api container shell
+make ssh-etl         # Access the ETL container shell
 make ssh-dagster     # Access the Dagster container shell
+make ssh-source-db   # Access the Source DB container shell
+make ssh-target-db   # Access the Target DB container shell
 make test-api        # Run automated tests inside the API container
 make run-etl         # Execute the ETL manually for a specifc date
 make down            # Stop and remove all containers
