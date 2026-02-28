@@ -2,9 +2,10 @@ import sys
 import os
 import pytest
 from fastapi.testclient import TestClient
+from main import app
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-from main import app
+
 
 
 API_TOKEN = os.getenv("API_TOKEN")
