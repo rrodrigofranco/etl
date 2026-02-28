@@ -74,7 +74,7 @@ project/
 ### 1️Build and start services
 
 ```bash
-docker-compose up --build
+docker-compose up --build | make up
 ```
 
 ---
@@ -101,7 +101,7 @@ docker-compose up --build
 ### Manual Execution (CLI)
 
 ```bash
-docker exec -it dagster_web bash
+docker exec -it dagster_web bash | make ssh-dagster 
 dagster job execute -j etl_job --partition 2026-02-26
 ```
 
