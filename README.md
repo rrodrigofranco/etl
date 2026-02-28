@@ -44,9 +44,15 @@ All services are containerized and managed with Docker Compose.
 ```
 project/
 │
-├── api/                # FastAPI data source
-├── etl/                # ETL logic
-├── dagster/            # Orchestration layer
+├── api/
+│   ├── database.py
+│   ├── main.py
+│   ├── models.py
+│   ├── seed.py
+├── etl/
+│   ├── etl.py
+│   ├── target_models.py
+├── dagster/            
 │   ├── assets.py
 │   ├── jobs.py
 │   ├── schedules.py
