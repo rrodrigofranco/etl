@@ -122,6 +122,7 @@ make test-api        # Run automated tests inside the API container
 make run-etl         # Execute the ETL manually for a specifc date
 make seed            # Run the seed
 make down            # Stop and remove all containers
+make clean           # Clear all containers
 ```
 ---
 
