@@ -4,6 +4,7 @@ from database import engine
 
 ALLOWED_VARIABLES = {"wind_speed", "power", "ambient_temperature"}
 
+# Retrieves time-series data from the "data" table within a given date range.
 def get_data(start: str, end: str, variables: list[str]):
     variables = [v for v in variables if v in ALLOWED_VARIABLES]
     cols = ", ".join(["timestamp"] + variables)
