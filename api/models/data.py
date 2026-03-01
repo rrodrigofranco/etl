@@ -2,7 +2,7 @@ from sqlalchemy import Column, Float, DateTime
 from sqlalchemy.orm import declarative_base
 
 Base = declarative_base()
-
+# Declaring the model with table data
 class Data(Base):
     __tablename__ = "data"
 

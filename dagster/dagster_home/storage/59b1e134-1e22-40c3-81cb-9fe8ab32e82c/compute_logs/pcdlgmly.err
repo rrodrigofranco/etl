@@ -1,0 +1,7 @@
+2026-02-28 22:49:59 +0000 - dagster - DEBUG - __ASSET_JOB - 59b1e134-1e22-40c3-81cb-9fe8ab32e82c - 46425 - LOGS_CAPTURED - Started capturing logs in process (pid: 46425).
+2026-02-28 22:49:59 +0000 - dagster - DEBUG - __ASSET_JOB - 59b1e134-1e22-40c3-81cb-9fe8ab32e82c - 46425 - etl_asset - STEP_START - Started execution of step "etl_asset".
+2026-02-28 22:50:01 +0000 - dagster - DEBUG - __ASSET_JOB - 59b1e134-1e22-40c3-81cb-9fe8ab32e82c - 46425 - etl_asset - STEP_OUTPUT - Yielded output "result" of type "Any". (Type check passed).
+2026-02-28 22:50:01 +0000 - dagster - DEBUG - __ASSET_JOB - 59b1e134-1e22-40c3-81cb-9fe8ab32e82c - etl_asset - Writing file at: /app/dagster_home/storage/etl_asset/2026-02-27 using PickledObjectFilesystemIOManager...
+2026-02-28 22:50:01 +0000 - dagster - DEBUG - __ASSET_JOB - 59b1e134-1e22-40c3-81cb-9fe8ab32e82c - 46425 - etl_asset - ASSET_MATERIALIZATION - Materialized value etl_asset.
+2026-02-28 22:50:01 +0000 - dagster - DEBUG - __ASSET_JOB - 59b1e134-1e22-40c3-81cb-9fe8ab32e82c - 46425 - etl_asset - HANDLED_OUTPUT - Handled output "result" using IO manager "io_manager"
+2026-02-28 22:50:01 +0000 - dagster - DEBUG - __ASSET_JOB - 59b1e134-1e22-40c3-81cb-9fe8ab32e82c - 46425 - etl_asset - STEP_SUCCESS - Finished execution of step "etl_asset" in 1.93s.

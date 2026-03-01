@@ -7,7 +7,7 @@ API_TOKEN = os.getenv("API_TOKEN", "test-token")
 
 client = TestClient(app)
 
-
+# Testing if the docs endpoint is working
 def test_health_check():
     response = client.get(
         "/docs",
@@ -17,7 +17,7 @@ def test_health_check():
     )
     assert response.status_code == 200
 
-
+# Testing if the date filter returns JSON correctly
 def test_data_with_date_filter_and_returns_json():
     response = client.get(
         "/data",

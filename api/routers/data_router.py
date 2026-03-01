@@ -5,6 +5,7 @@ from core.security import verify_token
 
 router = APIRouter()
 
+# Declaring the route data
 @router.get("/data")
 def read_data(
     start: str,

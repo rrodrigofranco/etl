@@ -4,6 +4,8 @@ from sqlalchemy.orm import Session
 import pandas as pd
 import numpy as np
 
+
+# Declaring the function run_seed to insert data into the database
 def run_seed():
     Base.metadata.create_all(bind=engine)
 
